@@ -1,27 +1,32 @@
-export const Menu: React.FC = () => {
-    return(
-        <aside className="column is-2 is-narrow-mobile is-fullheight section is-hidden-mobile">
-            <p className="menu-label is-hidden-touch">
-                Minhas Vendas
-            </p>
-            <ul className="menu-list">
-                <li>
-                    <a href="#"><span className="icon">Home</span></a>
-                </li>
-                
-                <li>
-                    <a href="#"><span className="icon">Cadastros</span></a>
-                </li>
-                
-                <li>
-                    <a href="#"><span className="icon">Relatórios</span></a>
-                </li>
-                
-                <li>
-                    <a href="#"><span className="icon">Config</span></a>
-                </li>
-            </ul>
+import Link from "next/link";
 
-        </aside>
-    )
-} 
+export const Menu: React.FC = () => {
+  return (
+    <aside className="column is-2 is-narrow-mobile is-fullheight section is-hidden-mobile">
+      <p className="menu-label is-hidden-touch">Minhas Vendas</p>
+      <ul className="menu-list">
+        <MenuItem href="/" label="Home"/>
+        <MenuItem href="/" label="Cadastros"/>
+        <MenuItem href="/" label="Relatórios"/>
+        <MenuItem href="/" label="Config"/>
+      </ul>
+    </aside>
+  );
+};
+
+type MenuItemProps = {
+  href: string;
+  label: string;
+};
+
+const MenuItem: React.FC<MenuItemProps> = (props: MenuItemProps) => {
+  return (
+    <li>
+      <Link href={props.href}>
+        <a>
+          <span className="icon">{props.label}</span>
+        </a>
+      </Link>
+    </li>
+  );
+};
