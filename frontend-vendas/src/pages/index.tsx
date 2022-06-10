@@ -1,6 +1,7 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import 'bulma/css/bulma.css'
+import { Layout } from 'components'
 
 const Home: NextPage = () => {
   return (
@@ -10,8 +11,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div>
-        Bem vindo!
-        <button className="button is-dark">Clique aqui</button>
+        <Layout/>
       </div>
     </div>
   )
