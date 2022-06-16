@@ -1,12 +1,12 @@
-import { Layout } from "components"
+import { Layout, Input } from "components"
 import { useState } from "react"
 
 export const CadastroProdutos: React.FC = () => {
 
-    const [sku, setSku] = useState('')
-    const [preco, setPreco] = useState('')
-    const [nome, setNome] = useState('')
-    const [descricao, setDescricao] = useState('')
+    const [sku, setSku] = useState<string>('')
+    const [preco, setPreco] = useState<string>('')
+    const [nome, setNome] = useState<string>('')
+    const [descricao, setDescricao] = useState<string>('')
 
     const submitButtonSave = () => {
         const produto = {
@@ -21,60 +21,37 @@ export const CadastroProdutos: React.FC = () => {
     return (
         <Layout titulo="Cadastro de Produtos">
         <div className="columns">
-            <div className="field column is-half">
-                    <label className="label" htmlFor="inputSKU">
-                        SKU: *
-                    </label>
-                <div className="control">
-                    <input
-                        className="input"
-                        type="text"
-                        placeholder="Digite o SKU do produto"
-                        value={sku}
-                        onChange={event => {
-                                setSku(event.target.value)
-                        }}
-                        id="inputSKU"
-                    />
-                </div>
-            </div>
-            <div className="field column is-half">
-                    <label className="label" htmlFor="inputPreco">
-                        Preço: *
-                    </label>
-                <div className="control">
-                    <input
-                        className="input"
-                        type="text"
-                        placeholder="Digite o Preço do produto"
-                        value={preco}
-                        onChange={event => {
-                            setPreco(event.target.value)
-                        }}
-                        id="inputPreco"
-                    />
-                </div>
-            </div>
+            <Input 
+                id="inputSku"
+                type="text" 
+                label="SKU *" 
+                placeholder="Digite o SKU do produto" 
+                value={sku}
+                onChange={setSku}
+                sizeInput="is-half"
+            />
+            
+            <Input 
+                id="inputPreco"
+                type="number" 
+                label="Preço: *" 
+                placeholder="Digite o Preço do produto" 
+                value={preco}
+                onChange={setPreco}
+                sizeInput="is-half"
+            />
         </div>  
 
         <div className="columns">
-            <div className="field column is-full">
-                    <label className="label" htmlFor="inputNome">
-                        Nome: *
-                    </label>
-                <div className="control">
-                    <input
-                        className="input"
-                        type="text"
-                        placeholder="Digite o Nome do produto"
-                        value={nome}
-                        onChange={event => {
-                            setNome(event.target.value)
-                        }}
-                        id="inputNome"
-                    />
-                </div>
-            </div>
+            <Input 
+                id="inputNome"
+                type="text" 
+                label="Nome: *" 
+                placeholder="Digite o Nome do produto" 
+                value={nome}
+                onChange={setNome}
+                sizeInput="is-full"
+            />
         </div>
 
         <div className="columns">
